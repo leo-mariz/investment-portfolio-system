@@ -1,0 +1,176 @@
+! + Tab -> gera a estrutura abaixo do html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mariz Dev</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        Todo o conteúdo do site
+    </body>
+
+
+- Observações:
+        <!-- -> Comentário
+        | -> shift + \
+        pre -> replica tudo o que está dentro da tag (ou seja, espaços, quebras de linha, etc, serão mostrados na pagina)
+        symbl.cc -> para obter codigo de simbolos -> copia igual se for no html. 
+                                                     U+ vira \
+        
+
+- Estrutura:
+    header
+        img
+        nav
+    main
+        aside
+        section
+            div
+        article
+    footer
+
+
+- Textos:
+    h1
+    h2
+    h3
+    h4
+    h5
+    h6
+    p
+    span
+
+
+- Formatação
+    b
+    i
+    strong
+    em
+    br
+    hr
+
+
+- Listas:
+    ul
+    ol
+    li
+    dl
+    dt
+    dd
+
+
+- Link:
+    a
+
+
+- Imagens:
+    img
+    figure
+    figcaption
+
+
+- Citações:
+    cite
+    blockquote
+    q
+
+
+- Contato:
+    adress
+
+
+- Código:
+    code
+    samp
+    var -> variável
+    kbd -> representa teclas do teclado
+
+
+-Data
+    <time datetime="YY-mm-dd"> Dia dd de mm de YYYY </time>
+
+
+- Formulário:
+    <form action="" method=""> -> há muitos atributos
+        <label for="nome"> Nome <label/>
+        <input id="nome" name="nome" type="text" placeholder="Seu Nome"/>
+        <label for="email"> Email <label/>
+        <input id="email" name="email" type="email" placeholder="Seu Email"/>
+        <button type="submit" >Enviar</button>
+
+
+- Tabela:
+    <table>
+        <caption> Legenda da tabela </caption>  -> OPCIONAL!
+        <colgroup>                              -> formatação da coluna (OPCIONAL - PREFERÍVEL FORMATAR NO CSS)
+            <col style="background-color: red"> -> exs para formatar as colunas, etc.
+            <col span="2"> 
+            <col> 
+        </colgroup>
+        <thead>                              -> cabeçalho
+            <th>cabeçalho1</th>              -> table head (posso colocar em uma tr se eu quiser colocar indices etc)
+            <th>cabeçalho2</th>
+            <th>cabeçalho3</th>
+        </thead>
+        <tbody>
+            <tr>                             -> tr = table row
+                <td>Linha 1</td>             -> td = tabel data
+                <td>Linha 1</td>
+                <td>Linha 1</td>
+            </tr>    
+            <tr>                             
+                <td>Linha 2</td>        
+                <td>Linha 2</td>
+                <td>Linha 2</td>
+            </tr>
+        </tbody> 
+        <tfoot>
+            <tr>
+                <td>Rodapé 1</td>
+                <td>Rodapé 2</td>
+                <td>Rodapé 3</td>
+            </tr>
+        </tfoot>
+
+
+- Iframes:
+    <iframe> adicionar os parâmetros do iframe que eu desejar </iframe>
+
+
+- Elementos Personalizados (Observações importantes para entender casos específicos):
+    Paginação:  <a href="#" class = "botao">1</a>
+                <a href="#" class = "botao ativo">2</a> -> adiciona a classe ativo para o botão do meio
+                <a href="#" class = "botao">3</a>
+
+    Acordeão: <div class="acordeao">
+                <div class="conteudo">
+                    <div class="item">
+                    <div class="item aberto"> -> adiciona a classe abero para a seção que está aberta do meio
+                    <div class="item">
+
+    Pop-up: Colocar após a main. Não importa muito onde ficará, só deve estar fora do conteúdo principal da pagina  
+            classe popup-abert normalmente entrará no body. Quando for ativada, mostra o popup.
+            <div class="popup">
+                <div class="container flex">
+                    <div class= "conteudo">
+                    ...
+
+    Carrossel: <section class="flex>
+                <div class = "carrossel">
+                    <div class="botao esquerdo> achar no symbl.cc
+                    <div class="botao direito> achar no symbl.cc
+                        <div class = "container">
+                            <div class="imagens flex">
+                                <div class="imagem flex">
+                                    <img...>
+                                <div class="imagem flex emfoco">
+                                    <img...>
+                                <div class="imagem flex">
+                                    <img...>
+                                <div class="imagem flex">
+                                    <img...>
+
+
+

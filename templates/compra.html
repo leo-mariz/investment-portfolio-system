@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Compra</title>
+    <link 
+        rel="stylesheet"
+        type="text/css"
+        href="{{ url_for('static', filename='style_compra.css') }}"> <!-- Caminho para o seu arquivo CSS -->
+</head>
+<body>
+    <div class="formulario-container">
+        <!-- action="processar_cadastro.py" method="post" -->
+        <form id="form-cadastro">
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" name="data" required>
+                </div>
+                <div class="form-column">
+                    <label for="ativo">Ativo:</label>
+                    <input type="text" id="ativo" name="ativo" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="valor-pago">Valor Pago:</label>
+                    <input type="number" id="valor-pago" name="valor_pago" step="0.01" required>
+                </div>
+                <div class="form-column">
+                    <label for="quantidade">Quantidade Efetiva:</label>
+                    <input type="number" id="quantidade" name="qtde_efet" step="0.00001" required>
+                </div>
+                <div class="form-column">
+                    <label for="local">Local:</label>
+                    <input type="text" id="local" name="local" required>
+                </div>
+            </div>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>

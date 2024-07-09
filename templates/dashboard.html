@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard de Investimentos</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="titulo">CARTEIRA CRIPTOMOEDAS</div>
+      <div class="botoes">
+        <button
+          class="botao compra"
+          onclick="window.location.href='/cadastrar-compra'"
+        >
+          Cadastro Compra
+        </button>
+        <button
+          class="botao venda"
+          onclick="window.location.href='/cadastrar-venda'"
+        >
+          Cadastro Venda
+        </button>
+        <button class="botao conversao">Conversão Moeda</button>
+      </div>
+    </header>
+    <main>
+      <section class="resumo-carteira-secao">
+        <div class="item esquerda">
+          <div class="titulo" id="total-carteira-item">CARTEIRA</div>
+          <div class="valor" id="total-carteira-valor">
+            R$ {{ valor_total_carteira | round(2) }}
+          </div>
+        </div>
+        <!-- <div class="valor-pequeno" id="var-perc-valor">+{{ percentual_valorizacao | round(2) }}%</div> -->
+        <div class="item esquerda">
+          <div class="titulo" id="investido-item">Investido</div>
+          <div class="valor" id="investido-valor">
+            R$ {{ total_investido | round(2) }}
+          </div>
+        </div>
+        <div class="item meio">
+          <div class="valor" id="var-real-valor">
+            R$ {{ valorizacao_total_carteira | round(2) }}
+          </div>
+        </div>
+        <div class="item meio">
+          <div class="titulo" id="custos-trans-item">Custos de Transação</div>
+          <div class="valor" id="custos-trans-valor">
+            R$ {{ custos_transacao | round(2) }}
+          </div>
+        </div>
+        <div class="item direita">
+          <div class="titulo" id="dolar-item">Dólar - BRL</div>
+          <div class="valor" id="dolar-valor">R$ {{ dolar | round(2) }}</div>
+        </div>
+        <div class="item direita">
+          <div class="titulo" id="qtde-ativos-item">Qtde Ativos</div>
+          <div class="valor" id="qtde-ativos-valor">
+            {{ quantidade_ativos }}
+          </div>
+        </div>
+      </section>
+      <section class="tabela-distribuicao-secao">
+        <div class="container">
+          <table class="tabela" id="tabela-distribuicao">
+            <thead>
+              <tr>
+                <th>Ativo</th>
+                <th>Qtde</th>
+                <th>Preço Médio ($)</th>
+                <th>Preço Atual ($)</th>
+                <th>Investido (R$)</th>
+                <th>Investido Atual (R$)</th>
+                <th>Var (R$)</th>
+                <th>Var (%)</th>
+                <th>% Carteira</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for ativo in distribuicao_ativos %}
+              <tr>
+                <th>{{ ativo['Ativo'] }}</th>
+                <td>{{ ativo['Qtde efet'] | round(5) }}</td>
+                <td>$ {{ ativo['Preço Médio ($)'] | round(2) }}</td>
+                <td id="preco-atual-{{ ativo['Ativo'] }}">
+                  $ {{ ativo['Preço Atual ($)'] | round(2) }}
+                </td>
+                <td>R$ {{ ativo['Valor Investido'] | round(2) }}</td>
+                <td>R$ {{ ativo['Investido Atual (R$)'] | round(2) }}</td>
+                <td>R$ {{ ativo['Var (R$)'] | round(2) }}</td>
+                <td>{{ ativo['Var (%)'] | round(2) }}%</td>
+                <td>{{ ativo['% Carteira'] | round(2) }}%</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="graficos-secao">
+        <div class="grafico-distribuicao">
+          <img
+            id="grafico-distribuicao"
+            src="data:image/png;base64,{{ graph_url }}"
+            alt="Gráfico de Distribuição dos Ativos"
+          />
+        </div>
+        <div class="grafico-cripto">
+          <div class="container filtro">
+            <button class="botao ativo">Filtro 1</button>
+            <button class="botao adicionar">Filtro 2</button>
+          </div>
+          <div class="container ativo">
+            <img
+              id="grafico-bitcoin"
+              src="{{ url_for('static', filename='grafico_bitcoin.png') }}"
+              alt="Gráfico do Bitcoin"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="static/script.js"></script>
+  </body>
+</html>

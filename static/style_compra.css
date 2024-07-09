@@ -1,0 +1,70 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box
+}
+
+html, body {
+    font-size: 62.5%;
+    font-family: "Montserrat", sans-serif;
+    background-color: #011E5D;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.formulario-container {
+    background-color: #c2baba;
+    width: auto; /* ou uma largura específica se preferir */
+    padding: 2rem;
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.8rem;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.form-column {
+    flex: 1;
+    margin-right: 1rem;
+}
+
+.form-column:last-child {
+    margin-right: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='date'] {
+    width: 100%;
+    padding: 0.8rem;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.4rem;
+}
+
+button[type='submit'] {
+    width: 100%;
+    padding: 1rem;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+
+button[type='submit']:hover {
+    background-color: #003d82;
+}

@@ -1,0 +1,194 @@
+Dominância: !important > classe > id > tag
+
+Sistema de Tamanhps - https:
+
+Observaçoes:
+    color:inherit -> herda a cor pai
+
+Seletores:
+    p,h1,h2 etc... {} -> estiliza as tags
+    #id, id2, id3 {} -> estiliza os ids
+    .class {} -> estiliza as classes
+    Ex: p span {} -> selecionando somente os spans dentro dos paragrafos
+    Ex: span.class {} -> somente spans com essa classe. Poderia ter um <p class="class">, que não seria selecionado por não ser um span, e sim um paragrafo
+
+Espaçadores:
+    margin: 
+        10px 20px 30px 40px -> um para cada direção, (começando em cima), caso fosse dois, seria para cima/embaixo, direita/esquerda, e um seria tudo
+                                -> espaçamento	entre borda e pagina. Podemos especificar também: margin-top ...
+    padding: 
+        10px 20px 30px 40px -> mesmo conceito. Define o espaçamento entre o conteudo e a borda
+
+Unidades relativas: 
+    vh, vw -> relativa ao tamanho da tela (h (altura) e w (largura))
+    em, rem -> relativa ao tamanho definido pelo html (font-size = 62.5% = 10px)
+
+Pseudo-classes:
+    LVHA -> (:link, :visited), (:hover, :active) normalmente utilizados em conjunto, conforme parenteses
+
+Pseudo-elementos:
+    ::after
+    ::before
+    ::first-letter
+    ::first-line 
+    ::first-child
+    ::last-child
+    etc. Estiliza partes especificas de um certo elemento
+
+Seletores universais:
+    *, html, body etc..    ( Abaixo temos BOAS PRÁTICAS )
+    -> * {
+        margin:0
+        padding:0
+        box-sizing: border-box -> definiremos o tamanho absoluto das bordas durante nossa estilização
+        }
+    -> html {
+        font-size: 62.5%
+        }
+
+Box-model:
+    box-sizing:border-box para nossas definições de tamanho serem sempre absolutas
+
+Sombras:
+    box-shadow: 1rem 1rem 1rem black -> deslocamento horizontal, vertical, blur radius (desfoque), raio de br, raio de propagação e cor
+    box-shadow: inset 1rem 1rem 1rem black -> sombra vai para dentro
+    box-shadow: 1rem 1rem 1rem black,
+                2rem 3rem 1rem black  -> colocando mais sombras
+
+Elementos arredondados:
+    border-radius: 5rem
+    border-radius: 50% -> vai ficando mais oval
+
+Tipos de visualização:
+    display: block -> ponta a ponta. Utiliza todo o espaço horizontal dado. Quebra linha
+    display: inline -> Apenas o espaço designado a ele. Não quebra linha. Só se aplicam propriedades horizontais
+    display: inline-block -> permite espaçamento vertical. Não quebra linha
+    display: none -> oculta o elemento
+    display: flex
+    display: grid
+
+Tipos de posicionamento:
+    position: static
+    position: relative  ->  mexe o bloco para começar em certa posição, a partir dos parametros abaixo
+        top: 20rem
+        left: 20rem
+        right: ...
+        bottom: ...
+    position: absolute  ->  define uma posição fixa ao elemento, em relação a um outro elemento com posicionamento relativo
+        'top: 0 , left:0 é o padrão'
+        bottom: 0
+        left: 0
+    position: fixed  ->  fixa o elemento em uma posição em relação a página.
+        top:,bottom:,left:,right: -> definir a posição
+    position: sticky -> se mexe, até a posição que você permitir. Depois fica fixo na tela
+        top:,bottom:,left:,right: -> definir a posição
+
+Background Color e Image:
+    background-color: cor
+    background-image: linear-gradient(90deg) -> cria gradientes. Direção definida em graus
+    background-image: url(https...), url(...) -> Coloca a imagem da url como background. Posso colocar varias imagens
+    background-position: 50% -> define a posição inicial da imagem para incluir no background "NÂO ENTENDI DIREITO"
+    background-size: contain -> contem a imagem inteira no background
+    background-size: cover -> cobre todo o background com a imagem (aumenta a imagem)
+    background-repeat: no-repeat -> não repete a imagem
+    background-repeat: repeat-x -> repete a imagem em x
+    background-repeat: repeat-y -> repete a imagem em y
+
+Flexbox:
+    display: flex
+    gap: x rem
+    flex: flex-grow flex-shrink flex-basis(rem) -> flex-basis 0rem, flex-grow definirá proporção
+    flex-direction: column/horizontal
+    flex-flow: column/row -> UTILIZAR no lugar de flex-direction (boa prática)
+    justify-content: center ...
+    width/height: x rem
+    align-items: center ...
+    align-self:
+
+CSS Nasting:
+    - & .class {
+        atributos...
+
+        & #id...           
+    }
+    Cria uma identação ao documento ( deixa mais organizado )
+
+Anotações Elemento personalizados HTML (conversa com as anotações html):
+    -Paginação: cursor: pointer -> mostra a mao ao passar o mouse
+                border: 1px solid black -> define borda
+                text-decoration: none
+    
+    -Acordeão:  Dividir entre cabecalho e conteudo
+                border-bottom-left-radius:0
+                border-bottom-right-radius:0
+                display: flex -> enquanto estiver criando o conteudo
+                         none -> após a criação da estrutura. Será flex quando o item for aberto (Parte Javascript)
+
+    -Pop-up: position: fixed -> importante pois ele sempre ficará naquela posição definida (normalmente centralizada)
+             top,bottom,left,right são 0
+             display: flex -> para criação do conteudo, depois alterar para none
+             background-color: adicionar transparencia
+             backdrop-filter: blur
+             quando tiver classe .popup-aberto -> display: flex
+
+    -Carrossel:  Há outras propriedades a serem colocadas no css abaixo, porém só anotamos as novas propriedades aprendidas no módulo e as hiper importantes
+                .carrossel{
+                    position: relative
+                    width: max-content
+
+                    & .container{
+                        overflow: hidden
+                    }
+
+                    & .imagem{
+                        position:relative
+                        width: min(calc(conta para achar o tamanho),calc(conta se diminuir a tela ...)) -> responsividade
+                        aspect-ratio: 1/1 -> mantem proporção
+                        overflow: hidden -> esconde o que estiver fora do tamanho da div
+                        
+                        &.emfoco::after{            -> não desfoca a imagem em foco
+                            background-color: transparent
+                        }
+                        &::after {                  -> para criar uma camada e desfocar a imagem
+                            content = ""
+                            position: absolute
+                            widht:100%
+                            height:100%
+                            background-color: white com transparencia
+                            backdrop-filter:blur(2px)
+                        }
+                    & .botao{
+                        position: absolute -> carrossel tera position relative
+                        z-index: 1
+                        top: 50%
+                        cursor:pointer
+                        box-shadow 0 0 0.4rem rgba()
+
+                        &.esquerda {
+                            transform: translate(-50%, -50%)
+                        }       
+
+                        &.direita {
+                            right:0
+                            transform: translate(50%, -50%)
+                        }       
+                    }   
+
+Grid:
+    display:grid
+    grid-auto-flow: row/column
+    grid-auto-rows: xrem xrem -> define tamanho das linhas criadas
+    grid-auto-columns: xrem xrem -> define tamanho das linhas criadas
+    grid-template-rows: 1fr 1fr 1fr ou repeat(3,1fr) -> define que haverá 3 linhas, cada uma com uma fração (ou tamanho que eu escolher)
+    grid-template-columns: 1fr 1fr 1fr ou repeat(3,1fr) -> define que haverá 3 colunas, cada uma com uma fração (ou tamanho que eu escolher)
+    grid: auto-rows auto-columns template-rows template-columns (NÃO é necessario escrever com a propriedade grid, é melhor utilizar as propriedades separadamente)
+    
+
+
+
+
+
+
+
+
+
